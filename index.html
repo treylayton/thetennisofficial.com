@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tennis Official - Every Call. Match Point Ready.</title>
+<meta name="description" content="Instant, accurate tennis rulings powered by on-device AI. 30 decision trees based on the 2026 ITF Rules of Tennis. No signal required.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#000000;--card:#1E1A0A;--card-border:#332E1A;--surface:#0E0A00;
+--gold:#EAB308;--gold-muted:#CA8A04;--gold-dim:rgba(234,179,8,0.12);
+--text:#F0F2F5;--text-secondary:#A09878;--text-faint:#6B6545;--divider:#332E1A;
+--btn-hover:#FACC15;--radius:12px;--max-w:1080px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{color:var(--btn-hover)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.gold{color:var(--gold)}.muted{color:var(--text-secondary)}.faint{color:var(--text-faint)}
+.divider{height:1px;background:var(--divider);margin:0 auto;max-width:var(--max-w)}
+section{padding:80px 0}
+@media(max-width:640px){section{padding:56px 0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--divider)}
+nav .inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;letter-spacing:0.02em}
+.nav-brand .the-tennis{color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;font-size:13px}
+.nav-brand .official{color:var(--text);font-weight:800}
+nav .links{display:flex;gap:24px;font-size:14px}
+nav .links a{color:var(--text-secondary)}nav .links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{padding:140px 0 80px;text-align:center}
+.hero-icon{margin:0 auto 32px}
+.hero-icon svg{width:80px;height:80px}
+.hero h1{font-size:clamp(36px,6vw,56px);line-height:1.1;margin-bottom:8px}
+.hero h1 .the-tennis{display:block;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;font-size:clamp(20px,3.5vw,28px);font-weight:600}
+.hero h1 .official{display:block;color:var(--text);font-weight:800}
+.hero-rule{width:60px;height:3px;background:var(--gold);margin:20px auto;border-radius:2px}
+.hero .tagline{font-size:clamp(18px,2.5vw,24px);color:var(--text-secondary);margin-bottom:12px;font-weight:500}
+.hero .lede{font-size:17px;color:var(--text-secondary);max-width:520px;margin:0 auto 36px;line-height:1.7}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:980px;font-size:16px;font-weight:600;border:none;cursor:pointer;transition:all 0.2s}
+.btn-primary{background:var(--gold);color:#000}.btn-primary:hover{background:var(--btn-hover)}
+.btn-secondary{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}.btn-secondary:hover{background:var(--gold-dim)}
+
+/* PROBLEM */
+.problem{background:var(--surface)}
+.problem .inner{max-width:720px;margin:0 auto;text-align:center}
+.problem h2{font-size:clamp(24px,4vw,36px);line-height:1.3;margin-bottom:24px}
+.problem h2 em{font-style:italic;color:var(--gold)}
+.scenario{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:28px 32px;text-align:left;font-size:16px;color:var(--text-secondary);line-height:1.8;margin-top:32px}
+.scenario .label{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-muted);margin-bottom:8px;font-weight:600}
+
+/* HOW IT WORKS */
+.how-it-works{text-align:center}
+.section-label{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold-muted);margin-bottom:8px;font-weight:600}
+.section-title{font-size:clamp(24px,4vw,36px);margin-bottom:48px;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:840px;margin:0 auto}
+.step{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px 24px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--gold-dim);color:var(--gold);font-weight:700;font-size:15px;margin-bottom:16px}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--text-secondary);line-height:1.6}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+
+/* ON-DEVICE */
+.on-device{background:var(--surface);text-align:center}
+.on-device .inner{max-width:640px;margin:0 auto}
+.on-device h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:16px}
+.on-device p{font-size:17px;color:var(--text-secondary);line-height:1.7}
+.on-device .highlight{color:var(--gold);font-weight:600}
+
+/* FEATURES */
+.features{text-align:center}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:960px;margin:0 auto}
+.feature-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:28px 20px;text-align:left}
+.feature-card .icon{font-size:28px;margin-bottom:12px}
+.feature-card h3{font-size:16px;margin-bottom:6px;font-weight:700}
+.feature-card p{font-size:14px;color:var(--text-secondary);line-height:1.5}
+
+/* PRIVACY */
+.privacy-section{background:var(--surface);text-align:center}
+.privacy-pills{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.pill{background:var(--card);border:1px solid var(--card-border);border-radius:980px;padding:12px 24px;font-size:15px;font-weight:600;color:var(--text)}
+
+/* COMPETITIVE */
+.competitive{text-align:center}
+.competitive blockquote{font-size:clamp(22px,3.5vw,32px);font-weight:700;color:var(--gold);font-style:italic;max-width:640px;margin:0 auto}
+
+/* PRICING */
+.pricing{background:var(--surface);text-align:center}
+.price-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:40px 32px;max-width:420px;margin:0 auto}
+.price-amount{font-size:48px;font-weight:800;color:var(--gold)}
+.price-period{font-size:16px;color:var(--text-secondary)}
+.price-trial{font-size:15px;color:var(--gold-muted);margin:12px 0 4px;font-weight:600}
+.price-note{font-size:14px;color:var(--text-faint);font-style:italic;margin-top:12px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--divider);padding:48px 0 32px;text-align:center}
+footer .hook{font-size:20px;margin-bottom:4px;font-weight:600}
+footer .hook-answer{font-size:20px;color:var(--gold);margin-bottom:28px;font-weight:700}
+footer .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;font-size:14px}
+footer .footer-links a{color:var(--text-secondary)}footer .footer-links a:hover{color:var(--gold)}
+footer .copyright{font-size:13px;color:var(--text-faint)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="inner">
+<div class="nav-brand">
+<span class="the-tennis">The Tennis</span>
+<span class="official">Official</span>
+</div>
+<div class="links">
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="privacy.html">Privacy</a>
+<a href="support.html">Support</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+<circle cx="60" cy="24" r="10" fill="#EAB308"/>
+<path d="M60 34 C60 34 58 48 56 54 L44 80 C42 84 46 86 48 83 L56 66 L56 100 C56 104 60 104 60 104 C60 104 64 104 64 100 L64 82 L64 100 C64 104 68 104 68 104 C68 104 72 104 72 100 L72 66 L64 66 L64 54 C62 48 60 34 60 34Z" fill="#EAB308"/>
+<path d="M56 42 L38 28 C36 26 34 28 36 30 L52 48" stroke="#EAB308" stroke-width="3" stroke-linecap="round"/>
+<path d="M64 42 L82 24" stroke="#EAB308" stroke-width="3" stroke-linecap="round"/>
+<circle cx="88" cy="18" r="8" stroke="#EAB308" stroke-width="2.5" fill="none"/>
+<line x1="84" y1="18" x2="92" y2="18" stroke="#EAB308" stroke-width="1.5"/>
+<path d="M88 10 C86 14 86 22 88 26" stroke="#EAB308" stroke-width="1.5" fill="none"/>
+<path d="M88 10 C90 14 90 22 88 26" stroke="#EAB308" stroke-width="1.5" fill="none"/>
+</svg>
+</div>
+<h1>
+<span class="the-tennis">The Tennis</span>
+<span class="official">Official</span>
+</h1>
+<div class="hero-rule"></div>
+<p class="tagline">Every call. Match point ready.</p>
+<p class="lede">Instant, accurate tennis rulings powered by on-device AI and 30 decision trees built on the 2026 ITF Rules of Tennis. No signal required.</p>
+<div class="cta-row">
+<a href="https://apps.apple.com" class="btn btn-primary">Download on the App Store</a>
+<a href="#features" class="btn btn-secondary">See How It Works</a>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section class="problem">
+<div class="container">
+<div class="inner">
+<h2>Four players. <em>Two opinions. Zero&nbsp;umpire.</em></h2>
+<p class="muted" style="font-size:17px;line-height:1.7">Recreational tennis has no chair umpire. When a close call happens, the game stalls and friendships strain. You need a ruling you can trust&mdash;instantly.</p>
+<div class="scenario">
+<div class="label">Court-side scenario</div>
+Doubles match, ad-court. Your partner is serving and the return team claims a foot fault&mdash;the server's foot touched the baseline before contact. Your partner disagrees. The other team wants the point replayed; your partner says it counts. Nobody budges. <strong style="color:var(--text)">The Tennis Official settles it in seconds.</strong>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+<div class="container">
+<p class="section-label">How It Works</p>
+<h2 class="section-title">Tap &rarr; Answer &rarr; Play&nbsp;On</h2>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>Pick a situation</h3>
+<p>Choose from 30 decision trees covering serves, scoring, line calls, doubles, and more.</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h3>Answer a few questions</h3>
+<p>The app walks you through simple yes-or-no questions to narrow down your exact scenario.</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h3>Get the ruling</h3>
+<p>Receive a clear, citable ruling based on the 2026 ITF Rules of Tennis. Share it if needed.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ON-DEVICE -->
+<section class="on-device">
+<div class="container">
+<div class="inner">
+<p class="section-label">Built for the Court</p>
+<h2>No signal? No problem.</h2>
+<p>The Tennis Official runs entirely on your device using <span class="highlight">Apple Intelligence</span>. Decision trees and AI chat work offline at the park, the club, or anywhere you play. Your data never leaves your phone.</p>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+<div class="container">
+<p class="section-label">Features</p>
+<h2 class="section-title">Everything you need. Nothing you don't.</h2>
+<div class="features-grid">
+<div class="feature-card">
+<div class="icon">&#x1F333;</div>
+<h3>30 Decision Trees</h3>
+<p>Tap through guided questions to reach the correct ruling in seconds.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F3BE;</div>
+<h3>Serving Rules</h3>
+<p>Foot faults, let serves, service order, and every edge case covered.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F4CA;</div>
+<h3>Scoring & Tie-breaks</h3>
+<p>Regular games, tie-break procedures, match tie-breaks, and set scoring.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F4CF;</div>
+<h3>Line Calls</h3>
+<p>In or out? Net cords, hindrance, and ball-mark inspection rules.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F46F;</div>
+<h3>Doubles Rules</h3>
+<p>Service order, receiving formation, partner positioning, and more.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F9E0;</div>
+<h3>Apple Intelligence</h3>
+<p>Ask questions in plain English. On-device AI gives you instant answers.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F4E4;</div>
+<h3>Share Rulings</h3>
+<p>Send the ruling to your playing partners so everyone sees the same answer.</p>
+</div>
+<div class="feature-card">
+<div class="icon">&#x1F4F4;</div>
+<h3>Works Offline</h3>
+<p>No Wi-Fi, no cell signal, no problem. Everything runs on your device.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRIVACY -->
+<section class="privacy-section">
+<div class="container">
+<p class="section-label">Privacy</p>
+<h2 class="section-title">Your data stays on your device. Period.</h2>
+<div class="privacy-pills">
+<div class="pill">No Data Collected</div>
+<div class="pill">On-Device AI</div>
+<div class="pill">No Accounts</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPETITIVE EDGE -->
+<section class="competitive">
+<div class="container">
+<blockquote>&ldquo;The best ref is the one nobody argues with.&rdquo;</blockquote>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+<div class="container">
+<p class="section-label">Pricing</p>
+<h2 class="section-title">One subscription. Every ruling.</h2>
+<div class="price-card">
+<div class="price-amount">$19.99</div>
+<div class="price-period">per year</div>
+<div class="price-trial">7-day free trial</div>
+<a href="https://apps.apple.com" class="btn btn-primary" style="margin-top:24px">Start Free Trial</a>
+<p class="price-note">Less than a can of balls per year.</p>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<p class="hook">&ldquo;Was that out?&rdquo;</p>
+<p class="hook-answer">Let's find out.</p>
+<div class="footer-links">
+<a href="privacy.html">Privacy Policy</a>
+<a href="support.html">Support</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Service</a>
+</div>
+<p class="copyright">&copy; 2026 Centrifical, Inc. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

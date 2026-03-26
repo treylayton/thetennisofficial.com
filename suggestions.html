@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suggestions - The Tennis Official</title>
+<meta name="description" content="Share your feedback and suggestions for The Tennis Official.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#000000;--card:#1E1A0A;--card-border:#332E1A;--surface:#0E0A00;
+--gold:#EAB308;--gold-muted:#CA8A04;--gold-dim:rgba(234,179,8,0.12);
+--text:#F0F2F5;--text-secondary:#A09878;--text-faint:#6B6545;--divider:#332E1A;
+--btn-hover:#FACC15;--radius:12px;--max-w:640px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{color:var(--btn-hover)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--divider)}
+nav .inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;letter-spacing:0.02em}
+.nav-brand .the-tennis{color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;font-size:13px}
+.nav-brand .official{color:var(--text);font-weight:800}
+nav .links{display:flex;gap:24px;font-size:14px}
+nav .links a{color:var(--text-secondary)}nav .links a:hover{color:var(--gold)}
+
+/* CONTENT */
+.page-header{padding:120px 0 40px;text-align:center}
+.page-header h1{font-size:32px;margin-bottom:8px}
+.page-header p{font-size:16px;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7}
+
+/* FORM */
+.form-section{padding:0 0 80px}
+.form-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px}
+.form-group{margin-bottom:24px}
+.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.form-group .hint{font-size:13px;color:var(--text-faint);margin-bottom:8px}
+select,textarea,input[type="email"]{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--card-border);background:var(--surface);color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s;outline:none}
+select:focus,textarea:focus,input[type="email"]:focus{border-color:var(--gold)}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A09878' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+select option{background:var(--card);color:var(--text)}
+textarea{resize:vertical;min-height:120px}
+.radio-group{display:flex;gap:16px;flex-wrap:wrap}
+.radio-option{position:relative;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;color:var(--text-secondary)}
+.radio-option input{position:absolute;opacity:0;width:0;height:0}
+.radio-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--card-border);transition:all 0.2s;flex-shrink:0}
+.radio-option input:checked ~ .radio-dot{border-color:var(--gold);background:var(--gold);box-shadow:inset 0 0 0 3px var(--card)}
+.radio-option input:checked ~ .radio-label{color:var(--text)}
+.radio-label{transition:color 0.2s}
+
+.btn-submit{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:980px;background:var(--gold);color:#000;font-size:16px;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;width:100%;justify-content:center}
+.btn-submit:hover{background:var(--btn-hover)}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed}
+
+.form-status{text-align:center;margin-top:16px;font-size:15px;font-weight:500;min-height:24px}
+.form-status.success{color:var(--gold)}
+.form-status.error{color:#EF4444}
+
+.optional-tag{font-size:12px;color:var(--text-faint);font-weight:400;margin-left:6px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--divider);padding:32px 0;text-align:center}
+footer .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-size:14px}
+footer .footer-links a{color:var(--text-secondary)}footer .footer-links a:hover{color:var(--gold)}
+footer .copyright{font-size:13px;color:var(--text-faint)}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="inner">
+<a href="index.html" class="nav-brand">
+<span class="the-tennis">The Tennis</span>
+<span class="official">Official</span>
+</a>
+<div class="links">
+<a href="index.html">Home</a>
+<a href="support.html">Support</a>
+</div>
+</div>
+</nav>
+
+<div class="page-header">
+<div class="container">
+<h1>Suggestions</h1>
+<p>Help us make The Tennis Official better. Every piece of feedback is read by our team.</p>
+</div>
+</div>
+
+<div class="form-section">
+<div class="container">
+<div class="form-card">
+<form id="suggestion-form">
+
+<div class="form-group">
+<label for="category">Category</label>
+<select id="category" name="category" required>
+<option value="" disabled selected>Select a category&hellip;</option>
+<option value="Rulings & Decision Trees">Rulings & Decision Trees</option>
+<option value="AI Chat">AI Chat</option>
+<option value="Serving Rules">Serving Rules</option>
+<option value="Scoring Rules">Scoring Rules</option>
+<option value="Doubles Rules">Doubles Rules</option>
+<option value="Missing Rule or Scenario">Missing Rule or Scenario</option>
+<option value="Bug Report">Bug Report</option>
+<option value="Design & Usability">Design & Usability</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="suggestion">Your Suggestion</label>
+<textarea id="suggestion" name="message" rows="5" placeholder="Describe your suggestion, issue, or idea in detail&hellip;" required></textarea>
+</div>
+
+<div class="form-group">
+<label>How important is this to you?</label>
+<div class="radio-group">
+<label class="radio-option">
+<input type="radio" name="importance" value="Nice to have" checked>
+<span class="radio-dot"></span>
+<span class="radio-label">Nice to have</span>
+</label>
+<label class="radio-option">
+<input type="radio" name="importance" value="Important">
+<span class="radio-dot"></span>
+<span class="radio-label">Important</span>
+</label>
+<label class="radio-option">
+<input type="radio" name="importance" value="Critical">
+<span class="radio-dot"></span>
+<span class="radio-label">Critical</span>
+</label>
+</div>
+</div>
+
+<div class="form-group">
+<label for="email">Email<span class="optional-tag">optional</span></label>
+<p class="hint">Only if you'd like us to follow up with you.</p>
+<input type="email" id="email" name="email" placeholder="you@example.com">
+</div>
+
+<button type="submit" class="btn-submit" id="submit-btn">Send Suggestion</button>
+<div class="form-status" id="form-status"></div>
+
+</form>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="support.html">Support</a>
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Service</a>
+</div>
+<p class="copyright">&copy; 2026 Centrifical, Inc. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+(function(){
+const form=document.getElementById('suggestion-form');
+const btn=document.getElementById('submit-btn');
+const status=document.getElementById('form-status');
+
+form.addEventListener('submit',function(e){
+e.preventDefault();
+btn.disabled=true;
+btn.textContent='Sending\u2026';
+status.textContent='';
+status.className='form-status';
+
+const data=new FormData(form);
+
+fetch('https://formspree.io/f/FORMSPREE_ENDPOINT_ID',{
+method:'POST',
+body:data,
+headers:{'Accept':'application/json'}
+}).then(function(response){
+if(response.ok){
+status.textContent='Thank you! Your suggestion has been received.';
+status.className='form-status success';
+form.reset();
+}else{
+return response.json().then(function(d){
+throw new Error((d.errors&&d.errors.map(function(e){return e.message}).join(', '))||'Submission failed');
+});
+}
+}).catch(function(err){
+status.textContent=err.message||'Something went wrong. Please try again or email us directly.';
+status.className='form-status error';
+}).finally(function(){
+btn.disabled=false;
+btn.textContent='Send Suggestion';
+});
+});
+})();
+</script>
+
+</body>
+</html>
